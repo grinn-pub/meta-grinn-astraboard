@@ -500,9 +500,8 @@
 &mdio0 {
 	phy0: ethernet-phy@0 {
 		reg = <0>;
-		realtek,clkout-disable;
-		realtek,rxc-ssc-enable;
-		realtek,sysclk-ssc-enable;
+		compatible = "ethernet-phy-ieee802.3-c22";
+		device_type = "ethernet-phy";
 	};
 };
 
@@ -514,6 +513,7 @@
 	phy-mode = "rgmii-id";
 	snps,reset-gpio = <&portd 8 GPIO_ACTIVE_HIGH>;
 	snps,reset-delays-us = <0 10000 50000>;
+	snps,reset-active-low;
 };
 
 &sm {

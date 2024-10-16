@@ -4,6 +4,7 @@ DT_NAME = "grinn-astraevb"
 DT_DIR = "${S}/arch/arm64/boot/dts/synaptics"
 
 SRC_URI += " \
+        file://eth.cfg \
 	file://${DT_NAME}.dts \
 "
 
