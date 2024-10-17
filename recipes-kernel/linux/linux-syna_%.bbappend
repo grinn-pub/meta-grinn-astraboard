@@ -7,6 +7,7 @@ SRC_URI += " \
         file://eth.cfg \
         file://${DT_NAME}.dts \
         file://enable-led-gpio.cfg \
+        file://spi_driver.cfg \
 "
 
 do_compile:prepend() {

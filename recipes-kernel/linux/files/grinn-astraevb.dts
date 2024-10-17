@@ -255,6 +255,11 @@
 		groups = "STS1_VALD";
 		function = "gpio";
 	};
+
+	spi1_pmux: spi1-pmux {
+		groups = "SPI1_SCLK", "SPI1_SDO", "SPI1_SDI", "SPI1_SS0n";
+		function = "spi1";
+	};
 };
 
 &sm_pinctrl {
@@ -1148,4 +1153,15 @@
 	};
 };
 
+&spi1 {
+	status = "okay";
+	num-cs = <1>;
+	pinctrl-0 = <&spi1_pmux>;
+
+	radar_a121: spi-a121@1 {
+		compatible = "spidev";
+		reg = <0>;
+		status = "okay";
+	};
+};
 
