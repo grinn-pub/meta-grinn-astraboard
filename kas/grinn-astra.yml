@@ -1,0 +1,78 @@
+
+header:
+  version: 17
+
+distro: poky
+machine: grinnastra
+
+repos:
+  poky:
+    url: https://git.yoctoproject.org/poky.git
+    refspec: 1e0d58c53b7d9c3feb631e46666ae7a3e3614253
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+  
+  meta-openembedded:
+    url: https://github.com/openembedded/meta-openembedded.git
+    refspec: 8bb16533532b6abc2eded7d9961ab2a108fd7a5b
+    layers:
+      meta-oe:
+      meta-python:
+      meta-multimedia:
+      meta-filesystems:
+
+  meta-qt5:
+    url: https://code.qt.io/yocto/meta-qt5.git
+    refspec: 644ebf220245bdc06e7696ccc90acc97a0dd2566
+
+  meta-synaptics:
+    url: https://github.com/synaptics-astra/meta-synaptics.git
+    refspec: 05a8caad14105fa3ec3c5cee38027652f93f89da
+
+  meta-grinn:
+    url: git@gitlab.grinndev.ovh:lukasz.smurawski/meta-grinn.git
+    branch: main
+
+
+local_conf_header:
+  standard: | 
+    USER_CLASSES ?= "buildstats"
+    PATCHRESOLVE = "noop"
+    CONF_VERSION = "2"
+    PACKAGE_CLASSES ?= "package_deb"  
+    DISTRO_FEATURES:remove = "x11 3g nfc"
+    DISTRO_FEATURES_NATIVESDK:remove = "x11"
+    INHERIT += "image-buildinfo"
+    IMAGE_BUILDINFO_VARS:append = " SYNA_SDK_REVISION"
+    DISTRO_FEATURES:append = " systemd"
+    VIRTUAL-RUNTIME_init_manager = "systemd"
+    DISTRO_FEATURES_BACKFILL_CONSIDERED += "sysvinit"
+    INITRAMFS_IMAGE_BUNDLE = "1"
+    INITRAMFS_IMAGE = "core-image-initramfs-boot"
+    OPTEE_TA_ENC= "prod"
+    PACKAGE_FEED_URIS ?= "https://astra-packages.synaptics.com/${ASTRA_VERSION}"
+    EXTRA_IMAGE_FEATURES += " package-management "  
+    DISTRO_FEATURES:append=" virtualization gtk"
+    LICENSE_FLAGS_ACCEPTED = "commercial Synaptics-EULA"
+    IMAGE_INSTALL:append = " packagegroup-core-buildessential"
+ 
+  debug-tweaks: |
+    EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+
+  diskmon: |
+    BB_DISKMON_DIRS ??= "\
+      STOPTASKS,${TMPDIR},1G,100K \
+      STOPTASKS,${DL_DIR},1G,100K \
+      STOPTASKS,${SSTATE_DIR},1G,100K \
+      STOPTASKS,/tmp,100M,100K \
+      HALT,${TMPDIR},100M,1K \
+      HALT,${DL_DIR},100M,1K \
+      HALT,${SSTATE_DIR},100M,1K \
+      HALT,/tmp,10M,1K"
+
+
+target:
+  - astra-media
+
