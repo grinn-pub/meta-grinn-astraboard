@@ -441,22 +441,9 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c1_pmux>;
 
-
-	vcpu: regulator@60 {
-		compatible = "silergy,sy8824c";
+    vcpu: regulator@60 {
+		compatible = "silergy,sy20257n";
 		reg = <0x60>;
-		status = "okay";
-		regulator-boot-on;
-		regulator-always-on;
-		regulator-active-discharge = <0>;
-		regulator-name = "vcpu";
-		regulator-min-microvolt = <762500>;
-		regulator-max-microvolt = <987500>;
-	};
-
-/*	vcpu: regulator@40 {
-		compatible = "ti,tps62870";
-		reg = <0x40>;
 		status = "okay";
 		regulator-boot-on;
 		regulator-always-on;
@@ -464,8 +451,7 @@
 		regulator-name = "vcpu";
 		regulator-min-microvolt = <700000>;
 		regulator-max-microvolt = <987500>;
-	}; */
-
+	};
 };
 
 &i2c2 {
@@ -473,9 +459,9 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c2_pmux>;
 
-	vcore: regulator@40 {
-		compatible = "ti,tps62870";
-		reg = <0x40>;
+    vcore: regulator@60 {
+		compatible = "silergy,sy20257n";
+		reg = <0x60>;
 		status = "okay";
 		regulator-boot-on;
 		regulator-always-on;
