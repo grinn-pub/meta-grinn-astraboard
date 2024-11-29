@@ -1,17 +1,18 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/grinn-astra:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/grinn-astra-evb:"
 
-DT_NAME = "grinn-astraevb"
 DT_DIR = "${S}/arch/arm64/boot/dts/synaptics"
 
 SRC_URI += " \
+        file://grinn-astra.dts \
+        file://grinn-astraevb.dts \
         file://eth.cfg \
-        file://${DT_NAME}.dts \
         file://enable-led-gpio.cfg \
         file://spi_driver.cfg \
 "
 
 do_compile:prepend() {
-	cp ${WORKDIR}/${DT_NAME}.dts ${DT_DIR}/
+	cp ${WORKDIR}/grinn-astraevb.dts ${WORKDIR}/grinn-astra.dts ${DT_DIR}/
 }
 
 
