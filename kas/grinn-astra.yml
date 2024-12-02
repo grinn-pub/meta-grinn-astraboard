@@ -32,7 +32,7 @@ repos:
     refspec: 05a8caad14105fa3ec3c5cee38027652f93f89da
 
   meta-grinn:
-    url: git@gitlab.grinndev.ovh:lukasz.smurawski/meta-grinn.git
+    url: https://github.com/grinn-pub/meta-grinn-astra.git
     branch: main
 
 
