@@ -382,6 +382,7 @@
 	status = "okay";
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c0_pmux>;
+  	clock-frequency = <100000>;
 	no-irq-suspend;
 
 	expander_dummy: gpio_dummy {
@@ -548,6 +549,10 @@
 	status = "okay";
 	i2c-bus = <&i2c3>;
 	dev-addr = <112>;
+};
+
+&isp_be {
+	status = "okay";
 };
 
 &isp_scaler {
