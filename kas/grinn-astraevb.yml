@@ -42,7 +42,7 @@ repos:
 
   meta-grinn-astraboard:
     url: https://github.com/grinn-pub/meta-grinn-astraboard.git
-    tag: v1.0.0
+    tag: v1.1.0
 
 local_conf_header:
   standard: |

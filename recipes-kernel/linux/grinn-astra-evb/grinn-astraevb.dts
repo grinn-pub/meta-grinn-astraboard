@@ -450,8 +450,8 @@
 		regulator-always-on;
 		regulator-active-discharge = <0>;
 		regulator-name = "vcpu";
-		regulator-min-microvolt = <700000>;
-		regulator-max-microvolt = <987500>;
+		regulator-min-microvolt = <800000>;
+		regulator-max-microvolt = <800000>;
 	};
 };
 
@@ -468,8 +468,8 @@
 		regulator-always-on;
 		regulator-active-discharge = <0>;
 		regulator-name = "vcore";
-		regulator-min-microvolt = <700000>;
-		regulator-max-microvolt = <987500>;
+		regulator-min-microvolt = <800000>;
+		regulator-max-microvolt = <800000>;
 	};
 };
 
